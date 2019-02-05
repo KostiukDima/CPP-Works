@@ -1,0 +1,7 @@
+﻿  Main.cpp
+c:\users\kostiyk\desktop\c++ works\class works\05.02.2019\05.02.2019\main.cpp(234): warning C4715: 'Dil': not all control paths return a value
+c:\users\kostiyk\desktop\c++ works\class works\05.02.2019\05.02.2019\main.cpp(246): warning C4715: 'Dil': not all control paths return a value
+c:\users\kostiyk\desktop\c++ works\class works\05.02.2019\05.02.2019\main.cpp(257): warning C4715: 'Dil': not all control paths return a value
+c:\users\kostiyk\desktop\c++ works\class works\05.02.2019\05.02.2019\main.cpp(294): warning C4715: 'Menu': not all control paths return a value
+c:\users\kostiyk\desktop\c++ works\class works\05.02.2019\05.02.2019\main.cpp(268): warning C4715: 'Dil': not all control paths return a value
+  05.02.2019.vcxproj -> C:\Users\Kostiyk\Desktop\C++ Works\Class Works\05.02.2019\Debug\05.02.2019.exe
