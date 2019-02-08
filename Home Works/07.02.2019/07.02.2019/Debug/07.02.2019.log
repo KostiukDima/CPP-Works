@@ -1,0 +1,4 @@
+﻿  Main.cpp
+d:\с++ works\home works\07.02.2019\07.02.2019\main.cpp(170): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+d:\с++ works\home works\07.02.2019\07.02.2019\main.cpp(172): warning C4244: =: преобразование "float" в "int", возможна потеря данных
+  07.02.2019.vcxproj -> D:\С++ Works\Home Works\07.02.2019\Debug\07.02.2019.exe
