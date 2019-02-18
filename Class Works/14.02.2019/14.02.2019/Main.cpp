@@ -170,37 +170,212 @@ void Sum(T1 arr[], const int SIZE)
 }
 */
 
+
+int Bank(int arrMoney[], int number);
+
 int main()
 {
-	int arrPhone[2][3]{1,2,3,19863,56932,85963}, arrLogin[2][3]{ 1,2,3,85634,12369,56984 }, arrNumber[2][3]{ 1,2,3,123698,85694,63248 }, arrMoney[2][3]{ 1,2,3,125,56932,362 }, arrPass[2][3]{ 1,2,3,125,56932,362 };
-	int phone = 0, login = 0, password = 0,choise=0;
+	int arrPhone[3]{380980,380981,380982}, arrLogin[3]{1111,2222,3333 }, arrMoney[3]{1000,2000,3000 }, arrPass[3]{111,222,333};
+	int number=4,phone = 0, login = 0, password = 0,choise=0;
+	bool a = false, b = false, a1 = false, a2 = false;
 
-	cout << "Authorization via login(0) or phone(1)" << endl;
-	cin >> choise;
-	if (choise == 0)
+	while (b != true)
 	{
-		cout << "Enter your login" << endl;
-		cin >> login;
-		for (int i = 0; i < 3; i++)
+		while (a != true)
 		{
-			if (login== arrLogin[][])
-			{
+			cout << "Authorization via login(1) or phone(2)(Press 0 to exit)" << endl;
+			cin >> choise;
 
+			if (choise == 0)
+			{
+				b = true;
+				a = true;
+			}
+			else if (choise == 1 || choise == 2)
+			{
+				a = true;
+			}
+			else
+			{
+				cout << "Wrong choise" << endl;
+				system("pause");
+				system("cls");
 			}
 		}
-	}
-	else if (choise==1)
-	{
-		cout << "Enter your phone" << endl;
-		cin >> phone;
-	}
-	cout << "Enter your password";
-	cin >> password;
+
+
+		if (choise == 1)
+		{
+			while (a1 != true)
+			{
+				cout << "Enter your login" << endl;
+				cin >> login;
+				for (int i = 0; i < 3; i++)
+				{
+					if (login == arrLogin[i])
+					{						
+						number = i; 
+						a1 = true;						
+					}
+				}
+				if (login != arrLogin[0] && login != arrLogin[1] && login != arrLogin[2])
+				{
+					cout << "Wrong login" << endl;
+					system("pause");
+					system("cls");
+				}
+			}
+		}
+		else if (choise == 2)
+		{
+			while (a2 != true)
+			{
+				cout << "Enter your phone" << endl;
+				cin >> phone;
+
+				for (int i = 0; i < 3; i++)
+				{
+					if (phone == arrPhone[i])
+					{
+						number = i;
+						a2=true;
+					}
+				}
+				if (phone != arrPhone[0] && phone != arrPhone[1] && phone != arrPhone[2])
+				{
+					cout << "Wrong phone" << endl;
+					system("pause");
+					system("cls");
+				}
+			}
+		}
+		if (number == 0 || number == 1 || number == 2)
+		{
+			for (int i = 3; i > 0; i--)
+			{
+				cout << "Enter your password" << endl;
+				cin >> password;
+
+				if (password == arrPass[number])
+				{
+					Bank(arrMoney, number);
+					i = 0;					
+				}
+				else
+				{
+					cout << "Wrong password has " << i - 1 << " attempts" << endl;
+					system("pause");
+					system("cls");
+				}
+			}
+		}
 	
-
-
-
-	
+	b = true;
+	}
 	system("pause");
 	return 0;
 }
+int Bank(int arrMoney[],int number)
+{
+	int choise = 0;
+	bool f = false, f1 = false;
+	
+	while (f != true)
+	{
+		cout << "Balance  " << arrMoney[number] << endl;
+		cout << "1 Money transfer\n2 Withdraw money\n(Press 0 to exit)" << endl;
+		cin >> choise;		
+		if (choise == 0)
+		{
+			f = true;
+		}
+		else if (choise == 1)
+		{
+			int trans = 0, money = 0, num = 0;
+			while (f1 != true)
+			{
+				cout << "0 On the card\n1 On the phone" << endl;
+				cin >> trans;
+				if (trans==0||trans ==2)
+				{
+					f1 = true;
+				}
+				else
+				{
+					cout << "Wrong choise" << endl;
+					system("pause");
+					system("cls");
+				}
+			}
+			if (trans == 0)
+			{
+				cout << "Enter number card" << endl;
+				cin >> num;
+				cout << "Enter money" << endl;
+				cin >> money;
+				if (arrMoney[number] >= money)
+				{
+					cout << "Transaction completed" << endl;
+					arrMoney[number] -= money;
+					system("pause");
+					system("cls");
+				}
+				else
+				{
+					cout << "Not enough money" << endl;
+					system("pause");
+					system("cls");
+				}
+			}
+			else if (trans == 1)
+			{
+				cout << "Enter number phone" << endl;
+				cin >> num;
+				cout << "Enter money" << endl;
+				cin >> money;
+				if (arrMoney[number] >= money)
+				{
+					cout << "Transaction completed" << endl;
+					arrMoney[number] -= money;
+					system("pause");
+					system("cls");
+				}
+				else
+				{
+					cout << "Not enough money" << endl;
+					system("pause");
+					system("cls");
+				}
+			}
+			
+		}
+		else if (choise == 2)
+		{
+			int money = 0;
+			cout << "Enter money" << endl;
+			cin >> money;
+			if (arrMoney[number] >= money)
+			{
+				cout << "Take the money" << endl;
+				arrMoney[number] -= money;
+				system("pause");
+				system("cls");
+			}
+			else
+			{
+				cout << "Not enough money" << endl;
+				system("pause");
+				system("cls");
+			}
+
+		}
+		else if (choise != 0&& choise != 1&& choise != 2)
+		{
+			cout << "Wrong choise"<<endl;
+			system("pause");
+			system("cls");
+		}
+	}
+	return 0;
+}
+
