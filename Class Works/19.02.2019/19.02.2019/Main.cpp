@@ -4,7 +4,7 @@
 using namespace std;
 
 
-/*template<typename T1>
+template<typename T1>
 void Product(T1 *pA, T1 *pB, T1 *pC, T1 *pSum )
 {
 	 *pSum=(*pA)*( *pB)*( *pC);	
@@ -54,62 +54,5 @@ int main()
 
 	system("pause");
 	return 0;
-}*/
-
-template<typename T1>
-void Sum(T1 *pA, T1 *pB, T1 *pSum);
-
-template<typename T1>
-void Difference(T1 *pA, T1 *pB, T1 *pSum);
-
-template<typename T1>
-void Product(T1 *pA, T1 *pB, T1 *pSum);
-
-template<typename T1>
-void Division(T1 *pA, T1 *pB, T1 *pSum);
-
-int main()
-{
-	double a = 10, b = 5, sum = 0;
-	double *pA = &a, *pB = &b, *pSum = &sum;
-	
-
-	Sum(pA, pB, pSum);
-	cout << "Sum = " << sum << endl;
-	
-	Difference(pA, pB, pSum);
-	cout << "Difference = " << sum << endl;
-
-	Product(pA, pB, pSum);
-	cout << "Product = " << sum << endl;
-
-	Division(pA, pB, pSum);
-	cout << "Division = " << sum << endl;
-
-	system("pause");
-	return 0;
 }
 
-template<typename T1>
-void Sum(T1 *pA, T1 *pB, T1 *pSum)
-{
-	*pSum = (*pA)+(*pB);
-}
-
-template<typename T1>
-void Difference(T1 *pA, T1 *pB, T1 *pSum)
-{
-	*pSum = (*pA) - (*pB);
-}
-
-template<typename T1>
-void Product(T1 *pA, T1 *pB, T1 *pSum)
-{
-	*pSum = (*pA) * (*pB);
-}
-
-template<typename T1>
-void Division(T1 *pA, T1 *pB, T1 *pSum)
-{
-	*pSum = (*pA) / (*pB);
-}
