@@ -2,10 +2,17 @@
 #include<ctime>
 using namespace std;
 
+//Дано два масива : А[n] и B[m].Утворити третій масив мінімального можливого розміру, у якому зібрати :
+//Елементи обох масивів;
+//Спільні элементи обох массивов;
+//Елементи масиву A, які не зустрічаються у B;
+//Елементи масиву В, які не зустрічаються у А;
+//Елементи масивів A і B, які не є спільними для них(тобто об’єднання результатів двох попереднії результатів).
+
 void Print(int *pArr, const int SIZE);
 void Fill(int *pArr, const int SIZE);
 void Foo(int *pArr, int *pArr2, const int SIZE);
-
+void Сommon(int *pArr, int *pArr2, const int SIZE);
 
 int main()
 {
@@ -38,6 +45,11 @@ int main()
 	cout << "\nArr Three" << endl;
 	Print(pArrThree, SIZE3);
 
+	cout << endl; 
+	cout << "Common elements of array arrOne and array arrTwo" << endl;
+	Сommon(pArrOne, pArrTwo, SIZE);
+
+	cout << endl;
 
 	cout << "Elements of an array arrOne that do not occur in arrTwo"<<endl;
 	Foo(pArrOne, pArrTwo, SIZE);
@@ -89,5 +101,18 @@ void Print(int *pArr, const int SIZE)
 	for (int i = 0; i < SIZE; i++)
 	{
 		cout << "arr [" << i << "] = " << *(pArr + i) << endl;
+	}
+}
+void Сommon(int *pArr, int *pArr2, const int SIZE)
+{
+	for (int i = 0; i < SIZE; i++)
+	{		
+		for (int j = 0; j < SIZE; j++)
+		{
+			if (*(pArr + i) == *(pArr2 + j))
+			{
+				cout << *(pArr + i) << endl;
+			}
+		}		
 	}
 }
