@@ -12,7 +12,7 @@ using namespace std;
 void Print(int *pArr, const int SIZE);
 void Fill(int *pArr, const int SIZE);
 void Foo(int *pArr, int *pArr2, const int SIZE);
-void Ñommon(int *pArr, int *pArr2, const int SIZE);
+void Common(int *pArr, int *pArr2, const int SIZE);
 
 int main()
 {
@@ -47,7 +47,7 @@ int main()
 
 	cout << endl; 
 	cout << "Common elements of array arrOne and array arrTwo" << endl;
-	Ñommon(pArrOne, pArrTwo, SIZE);
+	Common(pArrOne, pArrTwo, SIZE);
 
 	cout << endl;
 
@@ -103,7 +103,7 @@ void Print(int *pArr, const int SIZE)
 		cout << "arr [" << i << "] = " << *(pArr + i) << endl;
 	}
 }
-void Ñommon(int *pArr, int *pArr2, const int SIZE)
+void Common(int *pArr, int *pArr2, const int SIZE)
 {
 	for (int i = 0; i < SIZE; i++)
 	{		

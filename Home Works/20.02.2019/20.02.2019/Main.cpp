@@ -2,6 +2,64 @@
 
 using namespace std;
 
+//1. 	Используя указатели и оператор разыменования, определить наибольшее из двух чисел
+
+/*int main()
+{
+	int a = 0, b = 0;
+	int *pA = &a, *pB = &b;
+
+	cout << "Enter a" << endl;
+	cin >> a;
+	cout << "Enter b" << endl;
+	cin >> b;
+
+	if(*pA > *pB)
+	{
+		cout << *pA << " > " << *pB << endl;
+	}
+	else if (*pA < *pB)
+	{
+		cout << *pA << " < " << *pB << endl;
+	}
+	else if (*pA == *pB)
+	{
+		cout << *pA << " = " << *pB << endl;
+	}
+	system("pause");
+	return 0;
+}*/
+
+
+
+//2.	Используя указатели и оператор разыменования, обменять местами значения 3 - x переменных.
+
+/*int main()
+{
+	int a = 5, b = 2,c=7, tem=0;
+	int *pA = &a, *pB = &b,*pC = &c, *pTem=&tem;
+
+	cout << "a = " << *pA << endl;
+	cout << "b = " << *pB << endl;
+	cout << "c = " << *pC << endl;
+	
+	*pTem = *pA;
+	*pA = *pB;
+	*pB = *pC;
+	*pC = *pTem;
+
+	cout << endl;
+	cout << "a = " << *pA << endl;
+	cout << "b = " << *pB << endl;
+	cout << "c = " << *pC << endl;
+
+
+	system("pause");
+	return 0;
+}*/
+
+//3.	Написать примитивный калькулятор, пользуясь только указателями.
+
 template<typename T1>
 void Sum(T1 *pA, T1 *pB, T1 *pSum);
 
@@ -19,7 +77,7 @@ int Menu();
 
 int main()
 {
-	double a = 10, b = 5, sum = 0;
+	double a = 0, b = 0, sum = 0;
 	double *pA = &a, *pB = &b, *pSum = &sum;
 
 	int choise;
@@ -35,6 +93,10 @@ int main()
 		}
 		else if (choise == 1 || choise == 2 || choise == 3 || choise == 4)
 		{
+			cout << "Enter a" << endl;
+			cin >> a;
+			cout << "Enter b" << endl;
+			cin >> b;
 			if (choise == 1)
 			{
 				Sum(pA, pB, pSum);
@@ -53,7 +115,10 @@ int main()
 			else if (choise == 4)
 			{
 				Division(pA, pB, pSum);
-				cout << "Division = " << sum << endl;
+				if (*pB != 0) 
+				{
+					cout << "Division = " << sum << endl;
+				}
 			}
 			
 			system("pause");
@@ -86,7 +151,16 @@ void Product(T1 *pA, T1 *pB, T1 *pSum)
 template<typename T1>
 void Division(T1 *pA, T1 *pB, T1 *pSum)
 {
-	*pSum = (*pA) / (*pB);
+	if (*pB == 0)
+	{
+		cout << "to 0 can not be divided" << endl;
+	}
+	else
+	{
+		*pSum = (*pA) / (*pB);
+	}
+	
+	
 }
 int Menu()
 {

@@ -1,5 +1,3 @@
 ﻿  Main.cpp
-d:\с++ works\home works\20.02.2019\20.02.2019\main.cpp(25): warning C4101: amount: неиспользованная локальная переменная
-d:\с++ works\home works\20.02.2019\20.02.2019\main.cpp(25): warning C4101: choisedo: неиспользованная локальная переменная
-d:\с++ works\home works\20.02.2019\20.02.2019\main.cpp(115): warning C4715: Menu: значение возвращается не при всех путях выполнения
+d:\с++ works\home works\20.02.2019\20.02.2019\main.cpp(189): warning C4715: Menu: значение возвращается не при всех путях выполнения
   20.02.2019.vcxproj -> D:\С++ Works\Home Works\20.02.2019\Debug\20.02.2019.exe
