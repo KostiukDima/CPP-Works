@@ -81,10 +81,29 @@ void Encryption(char *pStr)
 	{
 		for (int i = 0; i < line; i++)
 		{
+			if (int(pStr[i]) - positions < 65 || int(pStr[i]) - positions < 97 )
+			{
+				symbol = int(pStr[i]) - positions;
+				cout << char(symbol);
+			}
 
-			symbol = int(pStr[i]) - positions;
-			cout << char(symbol);
+			else 
+				if (int(pStr[i]) - positions < 65 || int(pStr[i]) - positions > 97)
+			{
+				if (int(pStr[i]) - positions > 65)
+				{	
+					symbol = 122 - ((int(pStr[i]) - positions) - 64);
+					cout << char(symbol);
+				}
+
+				if (int(pStr[i]) - positions > 97)
+				{
+					symbol = 65 - ((int(pStr[i]) - positions) - 96);
+					cout << char(symbol);
+				}
+			}
 		}
+
 		cout << endl;
 	}
 }
