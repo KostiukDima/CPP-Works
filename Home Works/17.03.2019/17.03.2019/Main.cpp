@@ -28,7 +28,7 @@ int main()
 	}
 	else if (choise == 2)
 	{
-		cout << "Enter ñiphertext" << endl;
+		cout << "Enter ciphertext" << endl;
 		cin >> str;
 		Decryption(pStr);
 	}
@@ -53,7 +53,7 @@ void Encryption(char *pStr)
 	{
 		for (int i = 0; i < line ; i++)
 		{
-			if (int(pStr[i]) + positions < 90 && 65 <= int(pStr[i]) <= 90 || int(pStr[i]) + positions < 122 && 97 <= int(pStr[i]) )
+			if (int(pStr[i]) + positions < 90 && (int(pStr[i]) >= 65 && int(pStr[i]) <= 90) || int(pStr[i]) + positions < 122 && (int(pStr[i]) >= 97 && int(pStr[i]) <= 122))
 			{			
 				symbol = int(pStr[i]) + positions;
 				cout << char(symbol);
@@ -61,13 +61,13 @@ void Encryption(char *pStr)
 			
 			else if (int(pStr[i]) + positions>90 || int(pStr[i]) + positions>122)
 			{
-				if (int(pStr[i]) + positions > 90&& int(pStr[i])<=90)
+				if (int(pStr[i]) + positions > 90 && (int(pStr[i]) >= 65 && int(pStr[i]) <= 90))
 				{
 					symbol = 97 + ((int(pStr[i]) + positions) - 91);						
 					cout << char(symbol);
 				}
 				
-				if (int(pStr[i]) + positions > 122 && int(pStr[i]) <= 122)
+				if (int(pStr[i]) + positions > 122 &&  (int(pStr[i]) >= 97 && int(pStr[i]) <= 122))
 				{
 					symbol = 65 + ((int(pStr[i]) + positions) - 123);
 					cout << char(symbol);
@@ -81,24 +81,23 @@ void Encryption(char *pStr)
 	{
 		for (int i = 0; i < line; i++)
 		{
-			if (int(pStr[i]) - positions < 65 || int(pStr[i]) - positions < 97 )
+			if (int(pStr[i]) - positions > 65 && (int(pStr[i]) >= 65 && int(pStr[i]) <= 90) || int(pStr[i]) - positions > 97 && (int(pStr[i]) >= 97 && int(pStr[i]) <= 122))
 			{
 				symbol = int(pStr[i]) - positions;
 				cout << char(symbol);
 			}
 
-			else 
-				if (int(pStr[i]) - positions < 65 || int(pStr[i]) - positions > 97)
+			else if (int(pStr[i]) - positions < 65 || int(pStr[i]) - positions < 97)
 			{
-				if (int(pStr[i]) - positions > 65)
-				{	
-					symbol = 122 - ((int(pStr[i]) - positions) - 64);
+				if (int(pStr[i]) - positions < 65  && (int(pStr[i]) >= 65 && int(pStr[i]) <= 90))
+				{
+					symbol = 123 - ( positions - (int(pStr[i]) - 65));
 					cout << char(symbol);
 				}
 
-				if (int(pStr[i]) - positions > 97)
+				if (int(pStr[i]) - positions < 97 && (int(pStr[i]) >= 97 && int(pStr[i]) <= 122))
 				{
-					symbol = 65 - ((int(pStr[i]) - positions) - 96);
+					symbol = 91 - (positions - (int(pStr[i]) - 97));
 					cout << char(symbol);
 				}
 			}
@@ -113,29 +112,65 @@ void Decryption(char *pStr)
 	int choise = 0, positions = 0, symbol = 0;
 	int line = strlen(pStr);
 
-	cout << "What side do you want to shift text?\n1. Right\n2. Left" << endl;
+	cout << "Where was it shift text?\n1. Right\n2. Left" << endl;
 	cin >> choise;
 	cout << "How many positions to shift?" << endl;
 	cin >> positions;
 
-	if (choise == 1)
+	if (choise == 2)
 	{
 		for (int i = 0; i < line; i++)
 		{
+			if (int(pStr[i]) + positions < 90 && (int(pStr[i]) >= 65 && int(pStr[i]) <= 90) || int(pStr[i]) + positions < 122 && (int(pStr[i]) >= 97 && int(pStr[i]) <= 122))
+			{
+				symbol = int(pStr[i]) + positions;
+				cout << char(symbol);
+			}
 
-			symbol = int(pStr[i]) + positions;
-			cout << char(symbol);
+			else if (int(pStr[i]) + positions > 90 || int(pStr[i]) + positions > 122)
+			{
+				if (int(pStr[i]) + positions > 90 && (int(pStr[i]) >= 65 && int(pStr[i]) <= 90))
+				{
+					symbol = 97 + ((int(pStr[i]) + positions) - 91);
+					cout << char(symbol);
+				}
+
+				if (int(pStr[i]) + positions > 122 && (int(pStr[i]) >= 97 && int(pStr[i]) <= 122))
+				{
+					symbol = 65 + ((int(pStr[i]) + positions) - 123);
+					cout << char(symbol);
+				}
+			}
 		}
+
 		cout << endl;
 	}
-	else if (choise == 2)
+	else if (choise == 1)
 	{
 		for (int i = 0; i < line; i++)
 		{
+			if (int(pStr[i]) - positions > 65 && (int(pStr[i]) >= 65 && int(pStr[i]) <= 90) || int(pStr[i]) - positions > 97 && (int(pStr[i]) >= 97 && int(pStr[i]) <= 122))
+			{
+				symbol = int(pStr[i]) - positions;
+				cout << char(symbol);
+			}
 
-			symbol = int(pStr[i]) - positions;
-			cout << char(symbol);
+			else if (int(pStr[i]) - positions < 65 || int(pStr[i]) - positions < 97)
+			{
+				if (int(pStr[i]) - positions < 65 && (int(pStr[i]) >= 65 && int(pStr[i]) <= 90))
+				{
+					symbol = 123 - (positions - (int(pStr[i]) - 65));
+					cout << char(symbol);
+				}
+
+				if (int(pStr[i]) - positions < 97 && (int(pStr[i]) >= 97 && int(pStr[i]) <= 122))
+				{
+					symbol = 91 - (positions - (int(pStr[i]) - 97));
+					cout << char(symbol);
+				}
+			}
 		}
+
 		cout << endl;
 	}
 }
