@@ -20,7 +20,11 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
+<<<<<<< HEAD
     <ProjectGuid>{2C84BF20-8D91-43E1-913C-FA840F27CDE0}</ProjectGuid>
+=======
+    <ProjectGuid>{8A64C064-7D33-4E85-A756-894595DAAD64}</ProjectGuid>
+>>>>>>> 51013bbffd6727cac75f4ff73145ee0957c445b3
     <RootNamespace>My04042019</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>

@@ -14,12 +14,21 @@ struct Contact
 
 int main()
 {
+<<<<<<< HEAD
 	bool exit=false;
 	int choise=0;
 
 	string path = "PB.txt";
 
 	while (exit!=true)
+=======
+	bool exit = false;
+	int choise = 0;
+
+	string path = "PB.txt";
+
+	while (exit != true)
+>>>>>>> 51013bbffd6727cac75f4ff73145ee0957c445b3
 	{
 		cout << "1. Add contact\n2. Look at the contacts\n0. Exit" << endl;
 		cin >> choise;
@@ -29,11 +38,19 @@ int main()
 		{
 			exit = true;
 		}
+<<<<<<< HEAD
 		else if (choise==1)
 		{
 			ofstream writeFile;
 			writeFile.open(path, ofstream::app);
 			
+=======
+		else if (choise == 1)
+		{
+			ofstream writeFile;
+			writeFile.open(path, ofstream::app);
+
+>>>>>>> 51013bbffd6727cac75f4ff73145ee0957c445b3
 			Contact newContact;
 			cout << "Enter name" << endl;
 			cin >> newContact.name;
@@ -48,6 +65,7 @@ int main()
 			}
 			else
 			{
+<<<<<<< HEAD
 				writeFile <<"Name: "<<newContact.name<<endl<<"Surname: "<<newContact.surname<<endl<<"Number: "<<newContact.number<<endl<<endl;
 			}
 			writeFile.close();
@@ -55,6 +73,15 @@ int main()
 			
 		}
 		else if(choise == 2)
+=======
+				writeFile << "Name: " << newContact.name << endl << "Surname: " << newContact.surname << endl << "Number: " << newContact.number << endl << endl;
+			}
+			writeFile.close();
+
+
+		}
+		else if (choise == 2)
+>>>>>>> 51013bbffd6727cac75f4ff73145ee0957c445b3
 		{
 			ifstream readFile;
 
