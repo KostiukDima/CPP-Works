@@ -1,2 +1,2 @@
 ﻿  Main.cpp
-d:\с++ works\home works\01.04.2019\01.04.2019\main.cpp(53): error C2082: переопределение формального параметра "person"
+d:\с++ works\home works\01.04.2019\01.04.2019\main.cpp(59): error C2082: переопределение формального параметра "person"

@@ -29,8 +29,10 @@ struct Person
 };
 
 
-void AddPerson(Person *tmp ,Person *person, int personCount)
+void AddPerson(Person *person, int personCount)
 {
+	Person *tmp = new Person[personCount + 1];
+
 	for (int i = 0; i < personCount; i++)
 	{
 		*tmp[i].name = *person[i].name;
@@ -49,7 +51,11 @@ void AddPerson(Person *tmp ,Person *person, int personCount)
 	cin >> tmp[personCount].month;
 	cin.get();
 
+
+	
+	
 	delete[] person;
+
 	Person *person = new Person[personCount + 1];
 	person = tmp;
 	
@@ -159,8 +165,8 @@ int main()
 			
 			if (action == 1)
 			{
-				Person *tmp = new Person[personCount + 1];
-				AddPerson(tmp,person, personCount);
+				
+				AddPerson(person, personCount);
 				personCount++;
 			}
 			else if (action == 2)
