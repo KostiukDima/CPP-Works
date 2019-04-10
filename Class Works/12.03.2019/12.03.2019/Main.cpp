@@ -13,10 +13,11 @@ using namespace std;
 //‘ункц≥€ видаленн€ з матриц≥ стовпц€ за вказаним номером
 //‘ункц≥€ вставки нового стовпц€ за вказаним номером
 
-void Create(int **arr, int rows, int cols);
-void Fill(int **arr, int rows, int cols);
-void Print(int **arr, int rows, int cols);
-void AddRow(int **arr, int rows, int cols);
+void Create(int **&arr, int rows, int cols);
+void Fill(int **&arr, int rows, int cols);
+void Print(int **&arr, int rows, int cols);
+void AddRow(int **&arr, int rows, int cols);
+void AddRowIndex(int **&arr, int rows, int cols, int index);
 
 int main()
 {
@@ -64,7 +65,7 @@ int main()
 			cout << "Enter row" << endl;
 			cin >> indexRow;
 
-			AddRow(arr, rows, cols);
+			AddRowIndex(arr, rows, cols, indexRow);
 
 			rows++;			
 		}
@@ -99,7 +100,7 @@ int main()
 	return 0;
 }
 
-void Create(int **arr, int rows, int cols)
+void Create(int **&arr, int rows, int cols)
 {
 	for (int i = 0; i < rows; i++) 
 	{
@@ -107,7 +108,7 @@ void Create(int **arr, int rows, int cols)
 	}
 }
 
-void Fill(int **arr, int rows, int cols)
+void Fill(int **&arr, int rows, int cols)
 {
 	for (int i = 0; i < rows; i++) {
 		for (int j = 0; j < cols; j++) {
@@ -116,7 +117,7 @@ void Fill(int **arr, int rows, int cols)
 	}
 }
 
-void Print(int **arr, int rows, int cols)
+void Print(int **&arr, int rows, int cols)
 {
 	for (int i = 0; i < rows; i++) {
 		for (int j = 0; j < cols; j++) {
@@ -126,7 +127,7 @@ void Print(int **arr, int rows, int cols)
 	}
 }
 
-void AddRow(int **arr, int rows, int cols)
+void AddRow(int **&arr, int rows, int cols)
 {
 	int **tmp = new int *[rows + 1];
 
@@ -151,22 +152,10 @@ void AddRow(int **arr, int rows, int cols)
 	}
 	delete[] arr;
 	
-	arr = new int *[rows + 1];
-	
-	Create(arr, rows, cols);
-
-	for (int i = 0; i < rows; i++)
-	{
-		*arr[i]=*tmp[i];
-	}
-
-	Print(tmp, rows+1, cols);
-
-	arr = tmp;
-	delete[] tmp;
+	arr = tmp;	
 }
 
-void AddRowIndex(int **arr, int rows, int cols, int index)
+void AddRowIndex(int **&arr, int rows, int cols, int index)
 {
 	int **tmp = new int *[rows + 1];
 
@@ -195,17 +184,8 @@ void AddRowIndex(int **arr, int rows, int cols, int index)
 	{
 		delete[] arr[i];
 	}
-	delete[] arr;
-
-	arr = new int *[rows + 1];
-
-	Create(arr, rows, cols);
-
-	for (int i = 0; i < rows; i++)
-	{
-		arr[i] = tmp[i];
-	}
+	delete[] arr;	
 
 	arr = tmp;
-	delete[] tmp;
+	
 }
