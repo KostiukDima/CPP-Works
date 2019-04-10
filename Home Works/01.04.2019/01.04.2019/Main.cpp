@@ -1,4 +1,4 @@
-
+#include <string>
 #include<iostream>
 
 using namespace std;
@@ -24,19 +24,18 @@ struct Person
 
 	void ShowPersonInfo()
 	{
-		cout << "Name\t\t" << name << "\nSurname\t\t" << surname <<"\nDate of birth\t"<<day<<"."<<month<< endl;
+		cout << "Name\t\t" << name << "\nSurname\t\t" << surname <<"\nDate of birth\t"<<day<<"."<<month<< endl<<endl;
 	}
 };
 
-
-void AddPerson(Person *person, int personCount)
+void AddPerson(Person *&person, int personCount)
 {
 	Person *tmp = new Person[personCount + 1];
 
 	for (int i = 0; i < personCount; i++)
 	{
-		*tmp[i].name = *person[i].name;
-		*tmp[i].surname = *person[i].surname;
+		strcpy_s(tmp[i].name, person[i].name);
+		strcpy_s(tmp[i].surname, person[i].surname);
 		tmp[i].day = person[i].day;
 		tmp[i].month = person[i].month;
 	}
@@ -52,16 +51,15 @@ void AddPerson(Person *person, int personCount)
 	cin.get();
 
 
-	
-	
+		
 	delete[] person;
 
-	Person *person = new Person[personCount + 1];
+	person = new Person[personCount + 1];
 	person = tmp;
 	
 }
 
-void ShowInfo(Person *person, int personCount)
+void ShowInfo(Person *&person, int personCount)
 {
 	int sort;
 	cout << "1. Sort by name\n2. Sort by surname" << endl;
@@ -99,7 +97,7 @@ void ShowInfo(Person *person, int personCount)
 	}
 }
 
-void ListOfBirthdays(Person *person, int personCount)
+void ListOfBirthdays(Person *&person, int personCount)
 {
 	int month;
 	cout << "Enter month"<<endl;
@@ -115,6 +113,63 @@ void ListOfBirthdays(Person *person, int personCount)
 	}
 
 }
+
+int Search(Person *&person, int personCount)
+{
+	int search;
+	cout << "1. Search by name\n2. Search by surname" << endl;
+	cin >> search;
+	int counter=0;
+	
+	char sear[256];
+	cout << "Enter the item to search" << endl;
+	cin >> sear;
+	int len = strlen(sear);
+
+	if (search == 1)
+	{		
+		for (int i = 0; i < personCount; i++)
+		{
+			for (int j = 0; j < len; j++)
+			{
+				if ( int(person[i].name[j]) == int(sear[j]) )
+				{
+					counter++;
+				}
+
+			}
+			if (len == counter)
+			{
+				person[i].ShowPersonInfo();
+			}
+		}
+	}
+	else if (search == 2)
+	{
+		for (int i = 0; i < personCount; i++)
+		{
+			for (int j = 0; j < len; j++)
+			{
+				if (int(person[i].surname[j]) == int(sear[j]))
+				{
+					counter++;
+				}
+
+			}
+			if (len == counter)
+			{
+				person[i].ShowPersonInfo();
+			}
+		}
+	}
+	else if (search == 3)
+	{
+		cout << "Wrong choise" << endl;
+	}
+
+	return 0;
+}
+
 
 int main()
 {
@@ -180,7 +235,7 @@ int main()
 		}
 		else if (choise == 4)
 		{
-
+			Search(person, personCount);
 		}
 		else
 		{
