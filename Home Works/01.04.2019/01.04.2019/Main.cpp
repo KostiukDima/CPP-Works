@@ -49,9 +49,7 @@ void AddPerson(Person *&person, int personCount)
 	cout << "Enter your date of birth(month)" << endl;
 	cin >> tmp[personCount].month;
 	cin.get();
-
-
-		
+	
 	delete[] person;
 
 	person = new Person[personCount + 1];
@@ -111,10 +109,9 @@ void ListOfBirthdays(Person *&person, int personCount)
 			person[i].ShowPersonInfo();
 		}
 	}
-
 }
 
-int Search(Person *&person, int personCount)
+void Search(Person *&person, int personCount)
 {
 	int search;
 	cout << "1. Search by name\n2. Search by surname" << endl;
@@ -125,6 +122,7 @@ int Search(Person *&person, int personCount)
 	cout << "Enter the item to search" << endl;
 	cin >> sear;
 	int len = strlen(sear);
+	int poz;
 
 	if (search == 1)
 	{		
@@ -135,13 +133,13 @@ int Search(Person *&person, int personCount)
 				if ( int(person[i].name[j]) == int(sear[j]) )
 				{
 					counter++;
+					poz = i;
 				}
-
-			}
-			if (len == counter)
-			{
-				person[i].ShowPersonInfo();
-			}
+			}			
+		}
+		if (len == counter)
+		{
+			person[poz].ShowPersonInfo();
 		}
 	}
 	else if (search == 2)
@@ -153,12 +151,56 @@ int Search(Person *&person, int personCount)
 				if (int(person[i].surname[j]) == int(sear[j]))
 				{
 					counter++;
+					poz = i;
 				}
+			}			
+		}
+		if (len == counter)
+		{
+			person[poz].ShowPersonInfo();
+		}
+	}
+	else if (search == 3)
+	{
+		cout << "Wrong choise" << endl;
+	}
+}
 
-			}
-			if (len == counter)
+int DelSearch(Person *&person, int personCount, int search)
+{
+	int counter = 0;
+
+	char sear[256];
+	cout << "Enter the item to search" << endl;
+	cin >> sear;
+	int len = strlen(sear);
+	int poz;
+
+	if (search == 1)
+	{
+		for (int i = 0; i < personCount; i++)
+		{
+			for (int j = 0; j < len; j++)
 			{
-				person[i].ShowPersonInfo();
+				if (int(person[i].name[j]) == int(sear[j]))
+				{
+					counter++;
+					poz = i;
+				}
+			}
+		}		
+	}
+	else if (search == 2)
+	{
+		for (int i = 0; i < personCount; i++)
+		{
+			for (int j = 0; j < len; j++)
+			{
+				if (int(person[i].surname[j]) == int(sear[j]))
+				{
+					counter++;
+					poz = i;
+				}
 			}
 		}
 	}
@@ -167,9 +209,34 @@ int Search(Person *&person, int personCount)
 		cout << "Wrong choise" << endl;
 	}
 
-	return 0;
+	return poz;
 }
 
+void DelPerson(Person *&person, int personCount, int del, int choise)
+{
+	Person *tmp = new Person[personCount - 1];
+
+	for (int i = 0; i < del; i++)
+	{
+		strcpy_s(tmp[i].name, person[i].name);
+		strcpy_s(tmp[i].surname, person[i].surname);
+		tmp[i].day = person[i].day;
+		tmp[i].month = person[i].month;
+	}
+	for (int i = del; i < personCount-1; i++)
+	{
+		strcpy_s(tmp[i].name, person[i+1].name);
+		strcpy_s(tmp[i].surname, person[i+1].surname);
+		tmp[i].day = person[i+1].day;
+		tmp[i].month = person[i+1].month;
+	}
+		
+	delete[] person;
+
+	person = new Person[personCount - 1];
+	person = tmp;
+
+}
 
 int main()
 {
@@ -219,14 +286,20 @@ int main()
 			cin >> action;
 			
 			if (action == 1)
-			{
-				
+			{				
 				AddPerson(person, personCount);
 				personCount++;
 			}
 			else if (action == 2)
 			{
-				//DelPerson(person, personCount);
+				int choise;
+				cout << "1. Delete by name\n2. Delete by surname" << endl;
+				cin >> choise;
+								
+				int del;
+				del=DelSearch(person, personCount,choise);
+							
+				DelPerson(person, personCount, del, choise);
 			}
 			else
 			{
